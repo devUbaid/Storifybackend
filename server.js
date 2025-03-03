@@ -17,9 +17,9 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // Debugging: Check .env file load ho rahi hai ya nahi
-console.log(" Loaded .env variables:");
-console.log("PORT:", process.env.PORT);
-console.log("MONGO_URI:", process.env.MONGO_URI ? "✅ Loaded" : "❌ Not Found");
+// console.log(" Loaded .env variables:");
+// console.log("PORT:", process.env.PORT);
+// console.log("MONGO_URI:", process.env.MONGO_URI ? "✅ Loaded" : "❌ Not Found");
 connectDB();
 
 
@@ -45,10 +45,19 @@ connectDB();
 // CORS Middleware
 app.use(
   cors({
-    origin: "*",
+    origin: ["http://localhost:5173", "https://storify-app.vercel.app/"],
     credentials: true,
   })
 );
+// const corsConfig = {
+//   origin: ["http://localhost:5173", "https://storify-app.vercel.app/"], 
+//   methods: ["GET", "POST", "PUT", "DELETE"], 
+//   allowedHeaders: ["Content-Type", "Authorization"], 
+//   credentials: true,
+// };
+
+// app.use(cors(corsConfig));
+
 
 // Middleware
 app.use(express.json());
