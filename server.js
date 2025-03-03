@@ -16,8 +16,8 @@ const restoreRoutes = require("./routes/restoreRoutes");
 const app = express();
 const port = process.env.PORT || 5000;
 
-// 🔹 Debugging: Check .env file load ho rahi hai ya nahi
-console.log("🔹 Loaded .env variables:");
+// Debugging: Check .env file load ho rahi hai ya nahi
+console.log(" Loaded .env variables:");
 console.log("PORT:", process.env.PORT);
 console.log("MONGO_URI:", process.env.MONGO_URI ? "✅ Loaded" : "❌ Not Found");
 connectDB();
@@ -53,7 +53,7 @@ app.use(
 // Middleware
 app.use(express.json());
 
-// 🔹 Routes Setup
+//  Routes Setup
 app.use("/api/auth", authRoutes);
 app.use("/api/folders", folderRoutes);
 app.use("/api/files", fileRoutes);
@@ -63,12 +63,12 @@ app.use("/api/resource", downRoutes);
 app.use("/api/trash", trashRoutes);
 app.use("/api/restore", restoreRoutes);
 
-// 🔹 404 Error Handling
+//  404 Error Handling
 app.use((req, res) => {
   res.status(404).json({ message: "Page not found." });
 });
 
-// 🔹 Start Server
+//  Start Server
 app.listen(port, () => {
   console.log(`✅ Server running at http://localhost:${port}`);
 });
